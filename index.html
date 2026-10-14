@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#d9dff6">
+  <meta name="description" content="観測者が1度は経験しているであろう、げんじぶを知らない人がうろ覚えで覚えている「原因は自分にある。」をまとめました。">
+  <title>原因は自分にある。覚え違い集</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <header class="hero">
+    <div class="sparkle" aria-hidden="true">✧ ♡ ✧</div>
+    <h1>原因は自分にある。<br>覚え違い集</h1>
+    <p class="description">観測者が1度は経験しているであろう、げんじぶを知らない人がうろ覚えで覚えている「原因は自分にある。」をまとめました。</p>
+  </header>
+
+  <main class="container">
+    <section class="panel search-panel" aria-labelledby="search-title">
+      <h2 id="search-title">🔎 言葉を探す</h2>
+      <label for="search-input">キーワード</label>
+      <input id="search-input" type="search" placeholder="覚え違い・メンバー名などで検索…" autocomplete="off">
+      <p class="hint">タイトル・覚え違い・補足から検索できます。</p>
+    </section>
+
+    <section class="list-section" aria-labelledby="list-title">
+      <div class="section-heading">
+        <h2 id="list-title">語録一覧</h2>
+        <span id="result-count" class="count">読み込み中…</span>
+      </div>
+      <div id="quote-list" class="quote-list" aria-live="polite">
+        <p class="empty">語録を読み込んでいます…</p>
+      </div>
+      <p id="public-status" class="status" role="status"></p>
+    </section>
+
+    <section class="admin-section">
+      <div class="admin-heading">
+        <span class="eyebrow">SITE ADMIN</span>
+        <h2>管理者メニュー</h2>
+      </div>
+      <div id="admin-login-box" class="panel">
+        <p class="admin-description">管理者のみログインして、覚え違いの追加・編集・削除ができます。</p>
+        <form id="login-form">
+          <div class="field-group">
+            <label for="admin-email">管理者メールアドレス</label>
+            <input id="admin-email" type="email" autocomplete="username" required placeholder="登録したメールアドレス">
+          </div>
+          <div class="field-group">
+            <label for="admin-password">パスワード</label>
+            <input id="admin-password" type="password" autocomplete="current-password" required placeholder="パスワード">
+          </div>
+          <button class="button primary full" type="submit">管理者ログイン</button>
+        </form>
+        <p class="hint">閲覧するだけならログインは不要です。</p>
+        <p id="login-status" class="status" role="status"></p>
+      </div>
+
+      <div id="admin-editor" class="panel hidden">
+        <div class="editor-top">
+          <div>
+            <span class="eyebrow">ADMIN MODE</span>
+            <h3 id="form-heading">新しい覚え違いを追加</h3>
+          </div>
+          <button id="logout-button" class="button secondary" type="button">ログアウト</button>
+        </div>
+        <form id="quote-form">
+          <input id="quote-id" type="hidden">
+          <div class="field-group">
+            <label for="quote-title">タイトル <span class="required">*</span></label>
+            <input id="quote-title" maxlength="120" required placeholder="例：グループ名の覚え違い">
+          </div>
+          <div class="field-group">
+            <label for="quote-text">覚え違いの内容 <span class="required">*</span></label>
+            <textarea id="quote-text" rows="3" maxlength="2000" required placeholder="実際に言われた覚え違いなど"></textarea>
+          </div>
+          <div class="field-group">
+            <label for="quote-detail">補足・正しい情報（任意）</label>
+            <textarea id="quote-detail" rows="2" maxlength="1500" placeholder="どこが違うのか、エピソードなど"></textarea>
+          </div>
+          <div class="form-actions">
+            <button id="save-button" class="button primary" type="submit">語録を追加</button>
+            <button id="cancel-edit" class="button secondary hidden" type="button">編集をキャンセル</button>
+          </div>
+        </form>
+        <p id="editor-status" class="status" role="status"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>このサイトはファンによる非公式のまとめです。<br>掲載内容は管理者が確認・更新しています。</footer>
+</body>
+</html>
